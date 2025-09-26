@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Saradar Bank — App Activation</title>
+
+  <style>
+    :root{
+      --saradar-red: #8C1C27;       /* primary red from logo */
+      --saradar-red-600: #7a1820;   /* slightly darker */
+      --bg-start: #f7f7f9;
+      --bg-end: #fff7f7;
+      --muted: #6b6b6b;
+      --card: #ffffff;
+    }
+
+    /* Reset & base */
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter, "Helvetica Neue", Arial, sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+    body{
+      background:
+        radial-gradient(1200px 600px at 10% 10%, rgba(140,28,39,0.06), transparent 12%),
+        radial-gradient(900px 500px at 90% 90%, rgba(140,28,39,0.04), transparent 10%),
+        linear-gradient(180deg, var(--bg-start), var(--bg-end));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:28px;
+    }
+
+    /* Container layout */
+    .container{
+      width:100%;
+      max-width:1000px;
+      display:grid;
+      grid-template-columns: 1fr 420px;
+      gap:28px;
+      align-items:center;
+    }
+
+    /* Left: big hero panel with geometric shapes */
+    .hero{
+      position:relative;
+      overflow:hidden;
+      border-radius:16px;
+      padding:36px;
+      background: linear-gradient(180deg, rgba(140,28,39,0.03), rgba(140,28,39,0.01));
+      box-shadow: 0 10px 40px rgba(12,13,14,0.06);
+      min-height:480px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:flex-start;
+    }
+
+    /* Decorative shapes in hero */
+    .hero::before, .hero::after{
+      content:"";
+      position:absolute;
+      border-radius:20%;
+      filter: blur(36px);
+      opacity:0.12;
+      transform: rotate(12deg);
+    }
+    .hero::before{
+      width:420px;height:420px; right:-80px; top:-120px;
+      background: linear-gradient(45deg, var(--saradar-red), rgba(140,28,39,0.4));
+    }
+    .hero::after{
+      width:300px;height:300px; left:-120px; bottom:-80px;
+      background: linear-gradient(135deg, rgba(140,28,39,0.12), rgba(140,28,39,0.02));
+    }
+
+    .hero .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:12px;
+      background: rgba(140,28,39,0.06);
+      padding:8px 12px;
+      border-radius:999px;
+      color:var(--saradar-red-600);
+      font-weight:600;
+      margin-bottom:18px;
+      border:1px solid rgba(140,28,39,0.06);
+    }
+
+    .hero h1{
+      margin:0 0 14px 0;
+      color:var(--saradar-red);
+      font-size:34px;
+      line-height:1.02;
+      letter-spacing:-0.02em;
+    }
+    .hero p{ margin:0; color:var(--muted); font-size:16px; max-width:640px; line-height:1.5; }
+
+    .hero .points{ margin-top:18px; display:flex; gap:12px; flex-wrap:wrap; }
+    .chip{
+      background:white;
+      border-radius:10px;
+      padding:10px 14px;
+      box-shadow:0 6px 18px rgba(12,13,14,0.04);
+      font-weight:600;
+      color:var(--saradar-red-600);
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+    }
+
+    /* Right: login card */
+    .card{
+      background:var(--card);
+      border-radius:14px;
+      padding:26px;
+      box-shadow: 0 12px 36px rgba(12,13,14,0.07);
+    }
+    .brand{
+      display:flex;align-items:center;gap:12px;margin-bottom:16px;
+    }
+    .brand img{ height:46px; width:auto; display:block; }
+    .brand .title{ color:var(--saradar-red); font-weight:700; font-size:18px; }
+
+    .card h2{ margin:0 0 8px 0; font-size:20px; color:#111; }
+    .card p.lead{ margin:0 0 18px 0; color:var(--muted); font-size:14px; }
+
+    .form-row{ margin-bottom:12px; }
+    input[type="text"], input[type="password"]{
+      width:100%;
+      padding:12px 14px;
+      border-radius:10px;
+      border:1px solid rgba(0,0,0,0.06);
+      font-size:15px;
+      transition: box-shadow .12s ease, border-color .12s ease;
+      outline:none;
+    }
+    input:focus{
+      border-color: var(--saradar-red);
+      box-shadow: 0 6px 20px rgba(140,28,39,0.06);
+    }
+
+    .btn{
+      width:100%;
+      padding:12px 14px;
+      border-radius:10px;
+      background: linear-gradient(180deg, var(--saradar-red), var(--saradar-red-600));
+      color:#fff;
+      border:0;
+      font-weight:700;
+      font-size:15px;
+      cursor:pointer;
+      box-shadow: 0 8px 24px rgba(140,28,39,0.14);
+    }
+    .btn:active{ transform:translateY(1px); }
+    .note{ font-size:13px; color:var(--muted); margin-top:12px; text-align:center; }
+
+    /* footer small links */
+    .footer-links{ display:flex; gap:8px; justify-content:center; margin-top:14px; }
+    .footer-links a{ color:var(--saradar-red); text-decoration:none; font-weight:600; font-size:13px; }
+
+    /* responsive */
+    @media (max-width:920px){
+      .container{ grid-template-columns:1fr; padding:0 18px; }
+      .hero{ order:-1; min-height:280px; padding:20px; }
+    }
+
+  </style>
+</head>
+<body>
+  <main class="container" role="main">
+    <section class="hero" aria-hidden="false">
+      <div class="badge"> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="opacity:0.9"><path d="M3 12h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg> App Update</div>
+      <h1>Activate the Saradar Mobile App</h1>
+      <p>We’re rolling out a new mobile app update that strengthens security and improves performance. Activating the app only takes a few moments — scan the QR on your desktop or follow the steps on your mobile device to confirm activation.</p>
+
+      <div class="points" aria-hidden="true">
+        <div class="chip">Fast activation</div>
+        <div class="chip">Enhanced security</div>
+        <div class="chip">Biometric support</div>
+      </div>
+    </section>
+
+    <aside class="card" aria-labelledby="login-title">
+      <div class="brand">
+        <img src="logo.png" alt="Saradar Bank logo" />
+        <div class="title">Saradar Bank — IT Helpdesk</div>
+      </div>
+
+      <h2 id="login-title">Login to Activate App</h2>
+      <p class="lead">Enter your corporate credentials to confirm your device activation. After submission you will be redirected to the appropriate app store.</p>
+
+      <div class="form-row">
+        <label for="username" class="sr-only">Username</label>
+        <input id="username" type="text" placeholder="Username" autocomplete="username" />
+      </div>
+
+      <div class="form-row">
+        <label for="password" class="sr-only">Password</label>
+        <input id="password" type="password" placeholder="Password" autocomplete="current-password" />
+      </div>
+
+      <div class="form-row">
+        <button id="submitBtn" class="btn" onclick="handleSubmit()">Submit</button>
+      </div>
+
+      <div class="note">If you encounter issues, contact IT Helpdesk via the Service Portal.</div>
+
+      <div class="footer-links" aria-hidden="true">
+        <a href="#">Privacy</a>
+        <a href="#">Support</a>
+        <a href="#">Legal</a>
+      </div>
+    </aside>
+  </main>
+
+  <script>
+    // IMPORTANT: This page is a safe simulation/demo and DOES NOT store credentials.
+    // Replace the placeholders below with your real app URLs before deploying.
+    const PLAY_STORE = "https://play.google.com/store/apps/details?id=com.example.app";
+    const APP_STORE = "https://apps.apple.com/app/id123456789";
+    const FALLBACK = "https://www.saradarbank.com";
+
+    function handleSubmit(){
+      // small UX delay
+      try {
+        const ua = navigator.userAgent || navigator.vendor || window.opera;
+        const isAndroid = /android/i.test(ua);
+        const isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
+
+        // mimic processing time
+        document.getElementById('submitBtn').disabled = true;
+        document.getElementById('submitBtn').innerText = "Processing...";
+
+        setTimeout(()=> {
+          if (isAndroid) {
+            window.location.href = PLAY_STORE;
+          } else if (isIOS) {
+            window.location.href = APP_STORE;
+          } else {
+            window.location.href = FALLBACK;
+          }
+        }, 800);
+      } catch (e) {
+        window.location.href = FALLBACK;
+      }
+    }
+
+    // allow Enter key to trigger (if focus in input)
+    document.addEventListener('keydown', (e)=>{
+      if (e.key === 'Enter') {
+        const active = document.activeElement;
+        if (active && (active.id === 'username' || active.id === 'password')) {
+          e.preventDefault();
+          handleSubmit();
+        }
+      }
+    });
+  </script>
+</body>
+</html>
